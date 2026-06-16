@@ -6,14 +6,14 @@ func getFlutterError(_ error: Error) -> FlutterError {
     return FlutterError(code: "Error: \(e.code)", message: e.domain, details: error.localizedDescription)
 }
 
-@objc public class FlutterApnsPlugin: NSObject, FlutterPlugin, UNUserNotificationCenterDelegate {
+@objc public class TalkjsFlutterApnsPlugin: NSObject, FlutterPlugin, UNUserNotificationCenterDelegate {
     internal init(channel: FlutterMethodChannel) {
         self.channel = channel
     }
     
     public static func register(with registrar: FlutterPluginRegistrar) {
-        let channel = FlutterMethodChannel(name: "flutter_apns", binaryMessenger: registrar.messenger())
-        let instance = FlutterApnsPlugin(channel: channel)
+        let channel = FlutterMethodChannel(name: "talkjs_flutter_apns", binaryMessenger: registrar.messenger())
+        let instance = TalkjsFlutterApnsPlugin(channel: channel)
         registrar.addApplicationDelegate(instance)
         registrar.addMethodCallDelegate(instance, channel: channel)
     }

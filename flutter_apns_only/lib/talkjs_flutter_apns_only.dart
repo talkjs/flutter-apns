@@ -26,21 +26,23 @@ class ApnsPushConnectorOnly {
   final MethodChannel _channel = () {
     assert(Platform.isIOS,
         'ApnsPushConnectorOnly can only be created on iOS platform!');
-    return const MethodChannel('flutter_apns');
+    return const MethodChannel('talkjs_flutter_apns');
   }();
   ApnsMessageHandler? _onMessage;
   ApnsMessageHandler? _onLaunch;
   ApnsMessageHandler? _onResume;
 
   Future<bool> requestNotificationPermissions(
-      [IosNotificationSettings iosSettings = const IosNotificationSettings()]) async {
+      [IosNotificationSettings iosSettings =
+          const IosNotificationSettings()]) async {
     final bool? result = await _channel.invokeMethod<bool>(
         'requestNotificationPermissions', iosSettings.toMap());
     return result ?? false;
   }
 
   Future<ApnsAuthorizationStatus> getAuthorizationStatus() async {
-    return _authorizationStatusForString(await _channel.invokeMethod<String?>('getAuthorizationStatus', []));
+    return _authorizationStatusForString(
+        await _channel.invokeMethod<String?>('getAuthorizationStatus', []));
   }
 
   final StreamController<IosNotificationSettings> _iosSettingsStreamController =
