@@ -5,7 +5,7 @@
 //  Created by Pawel Szot on 19/03/2021.
 //
 
-#import "FlutterApnsSerialization.h"
+#import "include/FlutterApnsSerialization.h"
 #import <UserNotifications/UserNotifications.h>
 
 @implementation FlutterApnsSerialization

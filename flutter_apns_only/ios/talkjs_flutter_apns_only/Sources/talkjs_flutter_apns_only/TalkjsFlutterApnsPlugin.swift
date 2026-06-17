@@ -1,6 +1,15 @@
 import Flutter
 import UserNotifications
 
+/* We need this conditional import to import the Objective-C target defined in the Package.swift file for 
+    Swift Package Manager. When this file is imported via Cocoapods, the two targets are flattened into a
+    unified framework with its own umbrella header. Therefore, we need the import for Swift Package Manager
+    but we don't need it for Cocoapods.
+*/
+#if canImport(talkjs_flutter_apns_only_objc)
+import talkjs_flutter_apns_only_objc
+#endif
+
 func getFlutterError(_ error: Error) -> FlutterError {
     let e = error as NSError
     return FlutterError(code: "Error: \(e.code)", message: e.domain, details: error.localizedDescription)
