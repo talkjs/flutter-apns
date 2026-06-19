@@ -2,5 +2,6 @@
 #define TALKJS_FLUTTER_APNS_ONLY_OBJC_H
 
 #import "FlutterApnsSerialization.h"
+#import "FlutterApnsSwizzler.h"
 
 #endif
