@@ -1,0 +1,36 @@
+name: Publish to Pub.dev
+
+on:
+  push:
+    tags:
+      # must align with the tag-pattern configured on pub.dev
+      # tag-pattern on pub.dev: 'talkjs_flutter_apns_only-v{{version}}'
+      # where {{version}} is identical to what we have in pubspec.yaml
+      - "talkjs_flutter_apns_only-v[0-9]+.[0-9]+.[0-9]+"
+
+jobs:
+  publishing:
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write # Required for authentication using OIDC
+
+    environment: pub.dev
+
+    steps:
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 #v6.0.1
+
+      - name: Setup Dart SDK and provision OIDC token
+        uses: dart-lang/setup-dart@65eb853c7ba17dde3be364c3d2858773e7144260 #v1.7.2
+
+      - name: Setup Flutter SDK - needed for publishing Flutter packages.
+        uses: talkjs/flutter-action@408dece5e074567f0bb32ef68b82fe01ed5fdeac #v1.0.0
+
+      - name: Install dependencies
+        run: dart pub get
+        working-directory: flutter_apns_only
+
+        # If the package has errors, it won't upload.
+      - name: Publish
+        run: dart pub publish --force
+        working-directory: flutter_apns_only
