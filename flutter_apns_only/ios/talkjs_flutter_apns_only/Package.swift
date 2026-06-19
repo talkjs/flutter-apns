@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "talkjs_flutter_apns_only",
     platforms: [
-        .iOS("12.0"),
+        .iOS("13.0"),
     ],
     products: [
         .library(name: "talkjs-flutter-apns-only", targets: ["talkjs_flutter_apns_only"])
