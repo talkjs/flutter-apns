@@ -1,3 +1,4 @@
-# flutter_apns_only
+# talkjs_flutter_apns_only
 
-APNS push notification plugin. Works only on iOS. See flutter_apns for apns & firebase combo.
+Flutter plugin for Apple Push Notification service (APNs). It enables apps to register and unregister from APNs as
+well as providing a way to disable the swizzling done by `flutter_messaging`

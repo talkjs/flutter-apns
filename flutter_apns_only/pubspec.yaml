@@ -1,6 +1,6 @@
 name: talkjs_flutter_apns_only
-description: APNS push notification plugin.
-version: 1.0.0
+description: Flutter plugin for Apple Push Notification service (APNs). It enables apps to register and unregister from APNs as well as providing a way to disable the swizzling done by `flutter_messaging`
+version: 2.0.0
 homepage: https://talkjs.com
 repository: https://github.com/talkjs/flutter-apns/tree/master/flutter_apns_only
 
